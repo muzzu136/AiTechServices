@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "runtime": "cloudflare_worker",
+  "entrypoint": "src/index.ts",
+  "assets_dir": "./site",
+  "healthcheck_path": "/api/healthz",
+  "requested_capabilities": {
+    "db": "required",
+    "object_storage": "required"
+  },
+  "requested_env": [
+    "APP_BASE_URL",
+    "COMPANY_ID"
+  ]
+}
