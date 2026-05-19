@@ -411,24 +411,30 @@ app.get("/", (c) =>
       });
     });
 
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    // Progressive-enhancement scroll animations
+    // Sections are visible by default (opacity:1). Only add the hidden state
+    // once we know JS + IntersectionObserver are available, so they can be
+    // revealed as the user scrolls.
+    if ('IntersectionObserver' in window) {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('section').forEach(el => {
+        el.classList.add('js-reveal');
+        observer.observe(el);
       });
-    }, observerOptions);
-
-    document.querySelectorAll('section, .service-card, .pain-card, .step, .testimonial-card, .pricing-card').forEach(el => {
-      observer.observe(el);
-    });
+    }
   </script>
 
   <script>navigator.sendBeacon("/api/_ping");</script>

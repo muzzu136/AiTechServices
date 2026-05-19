@@ -177,6 +177,11 @@ section {
   max-width: 1120px;
   margin: 0 auto;
   padding: 4rem 2rem;
+  opacity: 1;
+}
+
+/* JS-enhanced: when IntersectionObserver is available, sections animate in */
+section.js-reveal {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
@@ -214,8 +219,7 @@ section.fade-in {
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
 .pain-card:nth-child(1) { animation-delay: 0.1s; }
@@ -260,8 +264,7 @@ section.fade-in {
   border-radius: 12px;
   padding: 2.5rem;
   transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -337,8 +340,7 @@ section.fade-in {
 
 .step {
   text-align: center;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
 .step:nth-child(1) { animation-delay: 0.1s; }
@@ -397,8 +399,7 @@ section.fade-in {
   border-radius: 12px;
   padding: 2rem;
   position: relative;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
 .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
@@ -478,8 +479,7 @@ section.fade-in {
   padding: 2.5rem;
   position: relative;
   transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
 .pricing-card:nth-child(1) { animation-delay: 0.1s; }
@@ -789,5 +789,20 @@ section.fade-in {
   .btn {
     padding: 0.7rem 1.25rem;
     font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pain-card,
+  .service-card,
+  .step,
+  .testimonial-card,
+  .pricing-card {
+    animation: none;
+    opacity: 1;
+  }
+  section.js-reveal {
+    opacity: 1;
+    transition: none;
   }
 }
