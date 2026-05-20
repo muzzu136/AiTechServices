@@ -28,6 +28,8 @@ type Bindings = {
   ANALYTICS: AnalyticsEngineDataset;
   DB: D1Database;
   FILES_BUCKET: R2Bucket;
+  LAUNCHYARD_API_BASE_URL: string;
+  LAUNCHYARD_API_KEY: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
@@ -93,6 +95,32 @@ app.post("/api/contact", async (c) => {
     )
       .bind(id, name, business_name, email, phone, interest, created_at)
       .run();
+
+    // Send email notification to founder
+    const emailBody =
+      `New lead submitted on VoiceForge AI:\n\n` +
+      `Name:          ${name}\n` +
+      `Business Name: ${business_name}\n` +
+      `Email:         ${email}\n` +
+      `Phone:         ${phone}\n` +
+      `Interest:      ${interest}\n\n` +
+      `Submitted at: ${created_at}`;
+
+    await fetch(
+      `${c.env.LAUNCHYARD_API_BASE_URL}/v1/public/companies/${c.env.COMPANY_ID}/emails`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${c.env.LAUNCHYARD_API_KEY}`,
+        },
+        body: JSON.stringify({
+          to: "skillsuccess9@gmail.com",
+          subject: `New lead: ${business_name} — ${interest}`,
+          body: emailBody,
+        }),
+      }
+    );
 
     return c.json({ success: true, id }, 200);
   } catch (e) {
