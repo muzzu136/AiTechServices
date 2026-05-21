@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   VoiceForge AI - Bold, Modern Landing Page
+   AiTechServices - Bold, Modern Landing Page
    Dark theme with electric blue accents
 ───────────────────────────────────────────────────────────────────────────── */
 
@@ -77,6 +77,12 @@ a:hover {
 
 .logo:hover {
   text-decoration: none;
+}
+
+.logo img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */

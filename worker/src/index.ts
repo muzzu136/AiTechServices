@@ -98,7 +98,7 @@ app.post("/api/contact", async (c) => {
 
     // Send email notification to founder
     const emailBody =
-      `New lead submitted on VoiceForge AI:\n\n` +
+      `New lead submitted on AiTechServices:\n\n` +
       `Name:          ${name}\n` +
       `Business Name: ${business_name}\n` +
       `Email:         ${email}\n` +
@@ -137,13 +137,13 @@ app.get("/", (c) =>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VoiceForge AI - AI Receptionists & Websites for Local Businesses</title>
+  <title>AiTechServices - AI Receptionists & Websites for Local Businesses</title>
   <meta name="description" content="AI Voice Agents that answer calls 24/7 and professional websites built in 5 days. Starting from $299/mo." />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <nav class="nav">
-    <a href="/" class="logo">VoiceForge AI</a>
+    <a href="/" class="logo"><img src="/attachments/media-1778601875209.png" alt="AiTechServices" style="height:44px;width:auto;display:block;" /></a>
   </nav>
 
   <main>
