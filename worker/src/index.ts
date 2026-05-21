@@ -206,7 +206,7 @@ app.get("/", (c) =>
         <div class="service-card">
           <div class="service-header">
             <h3 class="service-title">Website Builds</h3>
-            <p class="service-price">Starting from <span class="price">$799</span></p>
+            <p class="service-price">Starting from <span class="price">$999</span></p>
           </div>
           <ul class="service-features">
             <li>✓ Professional, modern design</li>
