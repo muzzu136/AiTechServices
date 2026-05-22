@@ -55,7 +55,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 2rem;
+  padding: 1.75rem 2rem;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.85) 100%);
   backdrop-filter: blur(10px);
@@ -80,15 +80,15 @@ a:hover {
 }
 
 .logo img {
-  height: 64px;
+  height: 110px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.35));
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(56, 189, 248, 0.55)) drop-shadow(0 0 24px rgba(99, 102, 241, 0.35));
   transition: filter 0.2s ease;
 }
 
 .logo:hover img {
-  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.6));
+  filter: brightness(1.3) drop-shadow(0 0 16px rgba(56, 189, 248, 0.8)) drop-shadow(0 0 32px rgba(99, 102, 241, 0.55));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -695,7 +695,7 @@ section.fade-in {
 
 @media (max-width: 768px) {
   .nav {
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.25rem;
   }
 
   section {
@@ -751,13 +751,13 @@ section.fade-in {
 
 @media (max-width: 768px) {
   .logo img {
-    height: 54px;
+    height: 75px;
   }
 }
 
 @media (max-width: 480px) {
   .nav {
-    padding: 0.75rem 1rem;
+    padding: 1rem 1rem;
   }
 
   .logo {
@@ -765,7 +765,7 @@ section.fade-in {
   }
 
   .logo img {
-    height: 46px;
+    height: 70px;
   }
 
   section {
