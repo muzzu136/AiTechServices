@@ -80,9 +80,15 @@ a:hover {
 }
 
 .logo img {
-  height: 44px;
+  height: 64px;
   width: auto;
   display: block;
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.35));
+  transition: filter 0.2s ease;
+}
+
+.logo:hover img {
+  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.6));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -743,6 +749,12 @@ section.fade-in {
   }
 }
 
+@media (max-width: 768px) {
+  .logo img {
+    height: 54px;
+  }
+}
+
 @media (max-width: 480px) {
   .nav {
     padding: 0.75rem 1rem;
@@ -750,6 +762,10 @@ section.fade-in {
 
   .logo {
     font-size: 1rem;
+  }
+
+  .logo img {
+    height: 46px;
   }
 
   section {

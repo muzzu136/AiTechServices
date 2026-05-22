@@ -143,7 +143,7 @@ app.get("/", (c) =>
 </head>
 <body>
   <nav class="nav">
-    <a href="/" class="logo"><img src="/attachments/media-1778601875209.png" alt="AiTechServices" style="height:44px;width:auto;display:block;" /></a>
+    <a href="/" class="logo"><img src="/attachments/media-1778601875209.png" alt="AiTechServices" /></a>
   </nav>
 
   <main>
