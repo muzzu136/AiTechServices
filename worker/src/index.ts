@@ -46,9 +46,12 @@ function navHTML(active = "") {
       ${link("/services", "Services", "services")}
       ${link("/contact", "Contact", "contact")}
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <a href="#contact" class="btn-nav-cta">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>`;
 }
 
@@ -75,6 +78,9 @@ function head(title: string, desc: string) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${title}</title>
   <meta name="description" content="${desc}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />`;
 }
 
@@ -159,8 +165,10 @@ app.get("/", (c) => c.html(`<!doctype html>
 <body>
 ${navHTML("home")}
 <main>
-<section id="hero" class="hero">
+<div id="hero">
+<section class="hero">
   <div class="hero-content">
+    <div class="hero-badge">⚡ Trusted by 200+ Local Businesses</div>
     <h1 class="hero-title">Never Miss a Call Again</h1>
     <p class="hero-subtitle">AI Voice Agents that answer calls, book appointments &amp; handle FAQs 24/7. Professional websites built in 5 days. Everything your local business needs.</p>
     <div class="hero-ctas">
@@ -169,6 +177,7 @@ ${navHTML("home")}
     </div>
   </div>
 </section>
+</div>
 
 <section id="pain-points" class="pain-points">
   <h2 class="section-title">The Problem Most Local Businesses Face</h2>
