@@ -73,12 +73,18 @@ const revealScript = `
   }
 `;
 
-function head(title: string, desc: string) {
+function head(title: string, desc: string, canonical: string, ogExtra: string = "") {
   return `<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${title}</title>
   <meta name="description" content="${desc}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="canonical" href="${canonical}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AiTechServices" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${desc}" />
+  <meta property="og:url" content="${canonical}" />
+  ${ogExtra}<link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />`;
@@ -159,9 +165,12 @@ app.post("/api/contact", async (c) => {
 
 // ─── Home page ────────────────────────────────────────────────────────────────
 
+const jsonLdLocalBusiness = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AiTechServices","description":"AI voice agents and professional websites for local businesses","url":"https://www.aitechservices.tech","email":"info@aitechservices.tech","areaServed":"United States","serviceType":["AI Voice Agent","Website Build"],"priceRange":"$$"}</script>`;
+
 app.get("/", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("AiTechServices - AI Receptionists & Websites for Local Businesses","AI Voice Agents that answer calls 24/7 and professional websites built in 5 days. Starting from $299/mo.")}</head>
+<head>${head("AiTechServices — AI Voice Agents & Websites for Local Businesses | Austin TX","AiTechServices helps local businesses never miss a call with AI voice agents and professional websites. Serving salons, dental clinics, contractors, auto shops and more.","https://www.aitechservices.tech/")}
+${jsonLdLocalBusiness}</head>
 <body>
 ${navHTML("home")}
 <main>
@@ -169,7 +178,7 @@ ${navHTML("home")}
 <section class="hero">
   <div class="hero-content">
     <div class="hero-badge">⚡ Trusted by 200+ Local Businesses</div>
-    <h1 class="hero-title">Never Miss a Call Again</h1>
+    <h1 class="hero-title">AI Voice Agents &amp; Websites for Local Businesses</h1>
     <p class="hero-subtitle">AI Voice Agents that answer calls, book appointments &amp; handle FAQs 24/7. Professional websites built in 5 days. Everything your local business needs.</p>
     <div class="hero-ctas">
       <a href="/services" class="btn btn-primary">Get an AI Voice Agent</a>
@@ -252,14 +261,14 @@ ${revealScript}
 
 app.get("/services", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("Our Services — AiTechServices","AI Voice Agents and professional website builds for local businesses. Learn what's included and how setup works.")}</head>
+<head>${head("AI Voice Agent & Website Build Services — AiTechServices","Explore AiTechServices' AI voice agent and website build services for local businesses. 24/7 call answering, appointment booking, and professional websites from $999.","https://www.aitechservices.tech/services")}</head>
 <body>
 ${navHTML("services")}
 <main>
 
 <section class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">Our Services</h1>
+    <h1 class="hero-title">AI Voice Agent &amp; Website Build Services</h1>
     <p class="hero-subtitle">AI-powered solutions built for local businesses — so you can focus on running your business while we handle the technology.</p>
   </div>
 </section>
@@ -386,13 +395,13 @@ ${footer()}
 
 app.get("/contact", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("Contact Us — AiTechServices","Get in touch with AiTechServices. We usually respond within a few hours.")}</head>
+<head>${head("Contact AiTechServices — Get an AI Voice Agent or Website","Get in touch with AiTechServices to set up an AI voice agent or build a professional website for your local business. Free consultation available.","https://www.aitechservices.tech/contact")}</head>
 <body>
 ${navHTML("contact")}
 <main>
 <section class="hero" style="padding-bottom:1rem;">
   <div class="hero-content">
-    <h1 class="hero-title">Let's Talk</h1>
+    <h1 class="hero-title">Contact Us — Get an AI Voice Agent or Website</h1>
     <p class="hero-subtitle">We usually respond within a few hours. Tell us about your business and we'll get back to you with a plan — no pressure, no obligation.</p>
   </div>
 </section>
@@ -410,9 +419,9 @@ ${footer()}
 app.get("/sitemap.xml", (c) =>
   c.text(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.aitechservices.tech/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.aitechservices.tech/services</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.aitechservices.tech/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aitechservices.tech/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.aitechservices.tech/services</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.aitechservices.tech/contact</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>`, 200, { "Content-Type": "application/xml" })
 );
 
