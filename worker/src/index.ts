@@ -165,11 +165,11 @@ app.post("/api/contact", async (c) => {
 
 // ─── Home page ────────────────────────────────────────────────────────────────
 
-const jsonLdLocalBusiness = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AiTechServices","description":"AI voice agents and professional websites for local businesses","url":"https://www.aitechservices.tech","email":"info@aitechservices.tech","areaServed":"United States","serviceType":["AI Voice Agent","Website Build"],"priceRange":"$$"}</script>`;
+const jsonLdLocalBusiness = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AiTechServices","description":"AI voice agents and website builds for local businesses","url":"https://www.aitechservices.tech","areaServed":"United States","serviceType":["AI Voice Agent","Website Build"]}</script>`;
 
 app.get("/", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("AiTechServices — AI Voice Agents & Websites for Local Businesses | Austin TX","AiTechServices helps local businesses never miss a call with AI voice agents and professional websites. Serving salons, dental clinics, contractors, auto shops and more.","https://www.aitechservices.tech/")}
+<head>${head("AiTechServices — AI Voice Agents & Websites for Local Businesses | Austin TX","AiTechServices builds AI voice agents and professional websites for local businesses. Never miss a call, book more appointments, and get a stunning website for $999.","https://www.aitechservices.tech/")}
 ${jsonLdLocalBusiness}</head>
 <body>
 ${navHTML("home")}
@@ -261,7 +261,7 @@ ${revealScript}
 
 app.get("/services", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("AI Voice Agent & Website Build Services — AiTechServices","Explore AiTechServices' AI voice agent and website build services for local businesses. 24/7 call answering, appointment booking, and professional websites from $999.","https://www.aitechservices.tech/services")}</head>
+<head>${head("AI Voice Agent & Website Build Services — AiTechServices","Explore AiTechServices' AI voice agent and website build services. Automate your calls, book more clients, and get a professional website for $999.","https://www.aitechservices.tech/services")}</head>
 <body>
 ${navHTML("services")}
 <main>
@@ -395,7 +395,7 @@ ${footer()}
 
 app.get("/contact", (c) => c.html(`<!doctype html>
 <html lang="en">
-<head>${head("Contact AiTechServices — Get an AI Voice Agent or Website","Get in touch with AiTechServices to set up an AI voice agent or build a professional website for your local business. Free consultation available.","https://www.aitechservices.tech/contact")}</head>
+<head>${head("Contact AiTechServices — Get an AI Voice Agent or Website","Get in touch with AiTechServices to set up an AI voice agent for your business or get a professional website built for $999. We serve local businesses across the US.","https://www.aitechservices.tech/contact")}</head>
 <body>
 ${navHTML("contact")}
 <main>
