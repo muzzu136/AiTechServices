@@ -775,6 +775,25 @@ section.fade-in {
   color: var(--accent);
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────── */
 /* Animations                                                                   */
 /* ─────────────────────────────────────────────────────────────────────────── */

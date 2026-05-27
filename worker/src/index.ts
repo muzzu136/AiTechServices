@@ -44,6 +44,7 @@ function navHTML(active = "") {
     <div class="nav-links" id="navLinks">
       ${link("/", "Home", "home")}
       ${link("/services", "Services", "services")}
+      ${link("/blog", "Blog", "blog")}
       ${link("/contact", "Contact", "contact")}
     </div>
     <div class="nav-right">
@@ -137,7 +138,7 @@ function contactFormScript(formId: string, msgId: string) {
   })();`;
 }
 
-function footer() { return `<footer class="footer">Made with \u2764\uFE0F using <a href="https://launchyard.dev">Launchyard</a></footer>`; }
+function footer() { return `<footer class="footer"><div class="footer-links"><a href="/">Home</a><a href="/services">Services</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>Made with ❤️ using <a href="https://launchyard.dev">Launchyard</a></footer>`; }
 
 // ─── Contact API ──────────────────────────────────────────────────────────────
 
@@ -414,6 +415,295 @@ ${footer()}
 </body>
 </html>`));
 
+// ─── Blog ─────────────────────────────────────────────────────────────────────
+
+const blogCSS = `
+<style>
+.blog-hero { padding: 5rem 2rem 3rem; text-align: center; }
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; }
+.blog-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; transition: transform 0.2s, border-color 0.2s; }
+.blog-card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.4); }
+.blog-card-date { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.blog-card-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.4; }
+.blog-card-title a { color: inherit; text-decoration: none; }
+.blog-card-title a:hover { color: #00d4ff; }
+.blog-card-excerpt { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 1.25rem; }
+.blog-read-more { color: #00d4ff; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+.blog-read-more:hover { text-decoration: underline; }
+.article-wrap { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+.article-meta { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+.article-wrap h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.25; margin-bottom: 1rem; }
+.article-wrap h2 { font-size: 1.45rem; font-weight: 700; color: #00d4ff; margin-top: 2.5rem; margin-bottom: 0.9rem; }
+.article-wrap p { font-size: 1.05rem; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 1.2rem; }
+.article-wrap ul { padding-left: 1.4rem; margin-bottom: 1.2rem; }
+.article-wrap ul li { font-size: 1.05rem; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 0.4rem; }
+.article-wrap strong { color: #fff; }
+.article-cta { margin-top: 3rem; padding: 2.5rem; background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; text-align: center; }
+.article-cta h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
+.article-cta p { color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+</style>`;
+
+const blogArticles = [
+  {
+    slug: "ai-voice-agent-for-small-business",
+    title: "How AI Voice Agents Help Local Businesses Never Miss a Call Again",
+    date: "May 12, 2026",
+    excerpt: "Every missed call is a missed opportunity — and most callers won't leave a voicemail. Learn how AI voice agents answer calls around the clock, book appointments automatically, and handle FAQs so your local business never loses a lead again.",
+  },
+  {
+    slug: "small-business-website-cost-2026",
+    title: "How Much Does a Small Business Website Cost in 2026?",
+    date: "May 19, 2026",
+    excerpt: "From DIY page builders to full-service agencies, website pricing varies wildly. Here's an honest breakdown of what local business owners actually pay in 2026 — and why $999 all-in is now a real option.",
+  },
+  {
+    slug: "best-ai-tools-for-local-businesses-2026",
+    title: "Best AI Tools for Local Businesses in 2026",
+    date: "May 26, 2026",
+    excerpt: "Labor costs are rising, customer expectations are higher, and bigger chains are everywhere. These are the AI tools local business owners are using in 2026 to compete, save time, and grow — without needing a tech team.",
+  },
+];
+
+app.get("/blog", (c) => c.html(`<!doctype html>
+<html lang="en">
+<head>${head(
+  "Blog — AI Tips & Resources for Local Businesses | AiTechServices",
+  "Practical guides for local business owners on AI voice agents, website costs, and the best AI tools to grow your business in 2026.",
+  "https://voiceforgeai.launchyard.app/blog"
+)}${blogCSS}</head>
+<body>
+${navHTML("blog")}
+<main>
+<section class="blog-hero hero">
+  <div class="hero-content">
+    <h1 class="hero-title">AI Tips &amp; Resources for Local Businesses</h1>
+    <p class="hero-subtitle">Practical guides to help you grow your business with AI — no tech background required.</p>
+  </div>
+</section>
+<div class="blog-grid">
+  ${blogArticles.map(a => `
+  <article class="blog-card">
+    <p class="blog-card-date">${a.date}</p>
+    <h2 class="blog-card-title"><a href="/blog/${a.slug}">${a.title}</a></h2>
+    <p class="blog-card-excerpt">${a.excerpt}</p>
+    <a href="/blog/${a.slug}" class="blog-read-more">Read article →</a>
+  </article>`).join("")}
+</div>
+</main>
+${footer()}
+<script>${navScript}${revealScript}</script>
+</body>
+</html>`));
+
+app.get("/blog/ai-voice-agent-for-small-business", (c) => c.html(`<!doctype html>
+<html lang="en">
+<head>${head(
+  "AI Voice Agent for Small Business — Never Miss a Call Again | AiTechServices",
+  "Discover how an AI voice agent can answer calls, book appointments, and handle FAQs for your small business 24/7 — at a fraction of the cost of a receptionist.",
+  "https://voiceforgeai.launchyard.app/blog/ai-voice-agent-for-small-business",
+  `<meta property="og:type" content="article" />`
+)}${blogCSS}</head>
+<body>
+${navHTML("blog")}
+<main>
+<div class="article-wrap">
+  <p class="article-meta">May 12, 2026 &nbsp;·&nbsp; AI Voice Agents</p>
+  <h1>How AI Voice Agents Help Local Businesses Never Miss a Call Again</h1>
+
+  <h2>What Is an AI Voice Agent?</h2>
+  <p>An AI voice agent is a software-powered phone assistant that answers incoming calls on behalf of your business — any time of day, any day of the year. It sounds natural, responds intelligently to common questions, books appointments directly into your calendar, and routes complex or urgent calls to the right person on your team.</p>
+  <p>Modern AI voice agents are trained specifically for your business. You provide the details — your services, hours, FAQs, pricing — and the agent learns to represent your brand accurately. From the caller's perspective, it sounds remarkably like talking to a knowledgeable member of your team.</p>
+
+  <h2>The Real Cost of a Missed Call</h2>
+  <p>Most local service businesses underestimate how much a missed call actually costs them. Industry research consistently puts the average value of a missed call for service businesses somewhere between <strong>$100 and $500 in lost revenue</strong> — when you factor in the lifetime value of a new customer, not just a single transaction.</p>
+  <p>Here's the part that stings most: the majority of callers who reach voicemail simply hang up and call the next result on Google. They don't leave a message. They don't call back. They move on. That means every unanswered ring during your lunch break, your busy hour, or your closed Sunday is potentially a customer you've lost to a competitor — permanently.</p>
+  <p>For a salon that misses three bookings a day, a plumber who misses two calls while under a sink, or a dental office that's slammed on Monday mornings, the numbers add up fast.</p>
+
+  <h2>AI Voice Agent vs. a Human Receptionist</h2>
+  <p>The traditional solution to missed calls was to hire a receptionist. And while a great receptionist is invaluable, the reality for most small businesses is that it's a significant investment:</p>
+  <ul>
+    <li><strong>Human receptionist:</strong> $35,000–$45,000 per year in salary alone — before benefits, payroll taxes, paid time off, training, or turnover costs. They work fixed hours, take sick days, and can only handle one call at a time.</li>
+    <li><strong>AI voice agent:</strong> A fraction of the annual cost. Available 24/7/365. Never calls in sick. Handles multiple calls simultaneously. No benefits, no HR headaches, no onboarding delays.</li>
+  </ul>
+  <p>This isn't about replacing great human staff — it's about making sure your business is covered during the hours when humans can't reasonably be available, and during busy periods when call volume exceeds capacity.</p>
+
+  <h2>Which Industries Benefit Most?</h2>
+  <p>While virtually any phone-dependent business can benefit, some industries see outsized results:</p>
+  <ul>
+    <li><strong>Salons &amp; spas:</strong> Stylists are often with a client when a booking call comes in. They can't answer — and the caller books elsewhere. An AI agent captures every appointment.</li>
+    <li><strong>Dental clinics:</strong> Front desk staff are juggling check-ins, insurance paperwork, and in-person patients simultaneously. Calls regularly go to hold or voicemail during peak hours.</li>
+    <li><strong>Auto repair shops:</strong> Technicians are on the floor with grease on their hands. The phone rings at the front, nobody picks up, the caller finds another shop.</li>
+    <li><strong>General contractors:</strong> Often on-site all day. Their phone is the lifeline for new leads — but it's impossible to answer every call while managing a job site.</li>
+    <li><strong>Restaurants:</strong> Staff are cooking, serving, or expediting during the dinner rush — exactly when reservation calls and takeout orders are flooding in.</li>
+  </ul>
+  <p>In every case, the missed call problem is the same: the business is too busy doing the work to also answer the phone. An AI voice agent solves this without adding headcount.</p>
+
+  <h2>How Does Setup Actually Work?</h2>
+  <p>One concern small business owners often have is that AI sounds complicated to set up. It's not. Here's how we do it at AiTechServices:</p>
+  <ul>
+    <li><strong>Step 1 — Share your business info:</strong> You fill out a short questionnaire covering your services, hours, most common questions, and how you'd like calls handled. It takes about 10 minutes.</li>
+    <li><strong>Step 2 — We configure your agent:</strong> Our team trains and configures the AI voice agent to match your specific business. This typically takes 3–5 business days.</li>
+    <li><strong>Step 3 — Go live:</strong> You forward your existing business number to your new AI agent (or we set up a fresh number). It goes live immediately with zero downtime.</li>
+  </ul>
+  <p>No technical knowledge required on your end. No hardware to install. No learning curve.</p>
+
+  <h2>Is an AI Voice Agent Right for Your Business?</h2>
+  <p>Ask yourself this: are you missing calls during your busiest hours? Are callers reaching voicemail after hours and on weekends? Are you sometimes with a customer when the phone rings and forced to let it go?</p>
+  <p>If the answer to any of those is yes, an AI voice agent will almost certainly pay for itself within the first few weeks — just from the additional bookings it captures that would otherwise have been lost.</p>
+  <p>It's not a luxury for big businesses anymore. It's a practical, affordable tool that's now accessible to any local service business that answers the phone.</p>
+
+  <div class="article-cta">
+    <h3>Ready to stop missing calls?</h3>
+    <p>Find out how AiTechServices can set up an AI voice agent for your business — fast, affordable, and built specifically for local businesses like yours.</p>
+    <a href="/services" class="btn btn-primary">View Our Services →</a>
+  </div>
+</div>
+</main>
+${footer()}
+<script>${navScript}</script>
+</body>
+</html>`));
+
+app.get("/blog/small-business-website-cost-2026", (c) => c.html(`<!doctype html>
+<html lang="en">
+<head>${head(
+  "Small Business Website Cost in 2026 — What You'll Actually Pay | AiTechServices",
+  "From DIY builders to full agencies, here's what a small business website actually costs in 2026 — and why $999 all-in is now possible with AI.",
+  "https://voiceforgeai.launchyard.app/blog/small-business-website-cost-2026",
+  `<meta property="og:type" content="article" />`
+)}${blogCSS}</head>
+<body>
+${navHTML("blog")}
+<main>
+<div class="article-wrap">
+  <p class="article-meta">May 19, 2026 &nbsp;·&nbsp; Websites</p>
+  <h1>How Much Does a Small Business Website Cost in 2026?</h1>
+
+  <h2>The 3 Main Options (and What They Actually Cost)</h2>
+  <p>If you've started researching website options for your business, you've probably noticed the price range is enormous — anywhere from a few hundred dollars to tens of thousands. Here's a clear breakdown of what you're actually paying for at each level:</p>
+  <ul>
+    <li><strong>DIY website builders (Wix, Squarespace, GoDaddy):</strong> $200–$500 per year in subscription fees. The upside is low cost. The downside is that DIY sites tend to look generic, conversion rates are typically lower, and the time cost is significant — most business owners underestimate how long it takes to build something that actually looks professional.</li>
+    <li><strong>Freelance web designer:</strong> $1,500–$5,000+ for a basic site. Quality varies widely depending on the designer. Timelines can stretch to 4–8 weeks. Revisions can drag on. You often end up with a site you can't update yourself and a developer who's moved on to their next project.</li>
+    <li><strong>Agency:</strong> $5,000–$25,000+ for a small business site. You get professional design, project management, and usually a polished result — but most local businesses simply don't need (or can't justify) this level of investment.</li>
+    <li><strong>AI-built (AiTechServices):</strong> $999 flat, all-in. Professional design, fast turnaround, and everything included — no surprise extras, no monthly subscription traps.</li>
+  </ul>
+
+  <h2>What Should a $999 Website Include?</h2>
+  <p>Not all budget websites are created equal. When evaluating any $999 (or similarly priced) offer, here's what you should expect to be included as standard:</p>
+  <ul>
+    <li><strong>Custom design</strong> tailored to your brand — not an off-the-shelf template that looks like a thousand other sites</li>
+    <li><strong>Fully mobile-responsive</strong> — looks and functions perfectly on phones, tablets, and desktops</li>
+    <li><strong>Contact form</strong> so leads come directly to your inbox</li>
+    <li><strong>Google indexing</strong> — submitted to Google Search Console so your site gets discovered</li>
+    <li><strong>Fast load time</strong> — optimized for performance, because slow sites lose visitors before they even see your offer</li>
+    <li><strong>SEO foundations</strong> — proper title tags, meta descriptions, image alt text, and a sitemap baked in from day one</li>
+  </ul>
+  <p>At AiTechServices, all of the above is included in our $999 website build. No upsells, no hidden fees, no "that's extra."</p>
+
+  <h2>Hidden Costs to Watch Out For</h2>
+  <p>One reason cheap website quotes rarely stay cheap: the headline price often excludes things you'll actually need. Common hidden extras include:</p>
+  <ul>
+    <li><strong>Domain name:</strong> $10–$20/year. Often sold separately even when "hosting is included."</li>
+    <li><strong>Hosting:</strong> $100–$300/year after any free trial period ends.</li>
+    <li><strong>Ongoing maintenance:</strong> Some agencies charge $100–$300/month just to keep your site up to date and secure.</li>
+    <li><strong>Stock photos:</strong> A subscription to Shutterstock or similar can add $100–$200/year, or individual images are $10–$50 each.</li>
+    <li><strong>Copywriting:</strong> If you expect the designer to write your website copy, that's often a separate charge — $300–$1,000 extra for a basic site.</li>
+    <li><strong>SSL certificate:</strong> Now standard in most plans, but still worth confirming.</li>
+  </ul>
+  <p>Before signing anything, always ask: "Does this price include everything I need to go live?" A reputable provider should be able to answer that question clearly.</p>
+
+  <h2>Does a More Expensive Website Mean Better Results?</h2>
+  <p>Not necessarily — and for local businesses especially, the answer is often no. A clean, fast, mobile-friendly site with a clear service offering, a compelling headline, and a prominent call-to-action will consistently outperform an expensive, flashy site that's slow to load or confusing to navigate.</p>
+  <p>Google also cares more about page speed, mobile usability, and basic SEO hygiene than about visual complexity. A $999 site built with these fundamentals will rank better than a $10,000 over-engineered site that wasn't built with search in mind.</p>
+  <p>The goal of your website is simple: get found, build credibility, and convert visitors into leads. You don't need custom animations or a bespoke CMS to do that.</p>
+
+  <h2>What to Look For When Choosing a Website Builder or Agency</h2>
+  <p>Regardless of budget, these are the signals that separate good providers from bad ones:</p>
+  <ul>
+    <li><strong>Mobile-first design:</strong> Over 60% of web traffic is on mobile. If a provider isn't leading with this, walk away.</li>
+    <li><strong>SEO foundations baked in:</strong> Not an add-on, not an upsell — it should be standard.</li>
+    <li><strong>Clear, all-in pricing:</strong> No "starting from" quotes without a clear scope. You should know what you're paying before you commit.</li>
+    <li><strong>Fast turnaround:</strong> Your business needs a site now, not in 3 months. Anything over 2 weeks for a standard local business site is a red flag.</li>
+    <li><strong>Includes copy/content:</strong> The best providers handle the words, not just the design. You shouldn't have to write your own website copy.</li>
+  </ul>
+
+  <div class="article-cta">
+    <h3>Get a professional website for $999 — all in.</h3>
+    <p>AiTechServices builds fast, mobile-friendly, SEO-ready websites for local businesses. No hidden fees, no surprises — delivered in 5–7 business days.</p>
+    <a href="/services" class="btn btn-primary">See What's Included →</a>
+  </div>
+</div>
+</main>
+${footer()}
+<script>${navScript}</script>
+</body>
+</html>`));
+
+app.get("/blog/best-ai-tools-for-local-businesses-2026", (c) => c.html(`<!doctype html>
+<html lang="en">
+<head>${head(
+  "Best AI Tools for Local Businesses in 2026 | AiTechServices",
+  "The top AI tools local business owners are using in 2026 to save time, answer calls, build websites, and automate marketing — without a tech team.",
+  "https://voiceforgeai.launchyard.app/blog/best-ai-tools-for-local-businesses-2026",
+  `<meta property="og:type" content="article" />`
+)}${blogCSS}</head>
+<body>
+${navHTML("blog")}
+<main>
+<div class="article-wrap">
+  <p class="article-meta">May 26, 2026 &nbsp;·&nbsp; AI Tools</p>
+  <h1>Best AI Tools for Local Businesses in 2026</h1>
+
+  <h2>Why Local Businesses Are Adopting AI Faster Than Ever</h2>
+  <p>Three forces are converging that are pushing local businesses toward AI tools faster than at any previous point: rising labor costs, higher customer expectations, and intensifying competition from larger chains and national brands.</p>
+  <p>Minimum wages have increased significantly across most US states. Finding and retaining reliable staff — even for part-time front-desk roles — has become a real challenge. Meanwhile, customers now expect instant responses, 24/7 availability, and seamless booking experiences. And the big players have the technology and budget to deliver on all of that.</p>
+  <p>AI tools are how local businesses level that playing field. They don't require a tech department, a large budget, or months of implementation. Many of the best tools available today can be live and delivering value within a week.</p>
+
+  <h2>AI Voice Agents — Never Miss a Call Again</h2>
+  <p>The single most impactful AI tool for most local service businesses is an AI voice agent — a smart phone assistant that answers calls on your behalf around the clock. It books appointments, handles frequently asked questions, captures lead information, and routes complex calls to your team.</p>
+  <p>For any business that depends on the phone — salons, contractors, dental offices, auto shops, restaurants — the math is straightforward: every missed call is a potential customer lost to a competitor. An AI voice agent eliminates that loss entirely.</p>
+  <p><strong>AiTechServices</strong> builds and manages custom AI voice agents for local businesses. Setup is simple: you share your business details, we train and configure your agent, and it goes live within days. Starting at $299/month, it's a fraction of what a part-time receptionist costs — and it never takes a day off.</p>
+
+  <h2>AI Website Builders — A Professional Site Without the Agency Price Tag</h2>
+  <p>Five years ago, a professional local business website cost $5,000–$15,000 from a decent agency and took 6–10 weeks. In 2026, AI-assisted design and development has fundamentally changed that equation.</p>
+  <p>Today, an AI-built website can look every bit as polished as an agency-built one — mobile-responsive, SEO-ready, fast-loading, and customized to your brand — for a fraction of the cost and in a fraction of the time. The technology has genuinely caught up.</p>
+  <p><strong>AiTechServices</strong> delivers complete, professional websites for local businesses at <strong>$999 flat</strong> — all-in, with no hidden fees. That includes custom design, mobile optimization, SEO foundations, a contact form, and Google indexing. Delivered in 5–7 business days.</p>
+  <p>If you don't have a website yet, or your current site is embarrassing you, this is the single highest-ROI investment you can make in 2026. A clean, fast, credible website means more calls, more leads, and more booked jobs.</p>
+
+  <h2>AI Scheduling Tools</h2>
+  <p>Once your website and phone coverage are sorted, automating your appointment booking is the next win. Tools like <strong>Calendly</strong> and <strong>Acuity Scheduling</strong> let customers book directly into your calendar without a back-and-forth email chain.</p>
+  <p>Both integrate with Google Calendar and can be embedded on your website. Calendly offers a generous free tier that's sufficient for many small businesses. Acuity is stronger for businesses with multiple staff members or complex service menus. Either one eliminates scheduling phone tag and reduces no-shows with automated reminders.</p>
+
+  <h2>AI Marketing Automation</h2>
+  <p>AI-powered marketing tools are increasingly accessible to businesses without a dedicated marketing team. A few categories worth knowing about:</p>
+  <ul>
+    <li><strong>Email follow-up automation:</strong> Tools like Mailchimp and Klaviyo can automatically follow up with leads, send post-appointment check-ins, and re-engage past customers. Setting up even a simple 2-email follow-up sequence can meaningfully increase repeat bookings.</li>
+    <li><strong>Review request automation:</strong> Platforms like Podium and Birdeye automatically send SMS or email review requests after a completed service. More Google reviews directly improves your local search ranking and builds trust with new visitors.</li>
+    <li><strong>Google Business Profile tools:</strong> Keeping your Google Business Profile updated — hours, photos, posts, responses to reviews — is one of the highest-leverage free actions for local SEO. Tools like Semrush Local or BrightLocal can help you monitor and manage it at scale.</li>
+  </ul>
+
+  <h2>How to Pick the Right AI Tools for Your Business</h2>
+  <p>With hundreds of AI tools on the market, it's easy to get overwhelmed — or to sign up for five tools and only use one. Here's a more practical framework:</p>
+  <ul>
+    <li><strong>Start with your biggest pain point.</strong> For most local businesses, that's either missed calls or no online presence. Solve one problem completely before adding more tools.</li>
+    <li><strong>Don't overbuy.</strong> A $300/month stack of tools you're barely using is worse than one $50/month tool you use daily. Complexity kills adoption.</li>
+    <li><strong>Pick tools with quick setup times.</strong> If it takes 6 months to implement, it's not the right fit for a small business. Look for tools that can be live in days, not quarters.</li>
+    <li><strong>Measure results simply.</strong> You don't need a data analytics team. Just track: are you getting more calls? More leads? More bookings? If yes, the tool is working.</li>
+  </ul>
+  <p>For most local businesses, the highest-ROI starting point in 2026 is clear: get a professional website and make sure every incoming call gets answered. Everything else is secondary.</p>
+
+  <div class="article-cta">
+    <h3>AiTechServices — AI voice + website, in one place.</h3>
+    <p>We're the one-stop shop for local businesses that want to stop missing calls and start looking credible online. AI voice agent from $299/month. Professional website for $999. Fast setup, no tech knowledge needed.</p>
+    <a href="/services" class="btn btn-primary">Explore Our Services →</a>
+  </div>
+</div>
+</main>
+${footer()}
+<script>${navScript}</script>
+</body>
+</html>`));
+
 // ─── Sitemap & Robots ─────────────────────────────────────────────────────────
 
 app.get("/sitemap.xml", (c) =>
@@ -422,6 +712,10 @@ app.get("/sitemap.xml", (c) =>
   <url><loc>https://www.aitechservices.tech/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.aitechservices.tech/services</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.aitechservices.tech/contact</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aitechservices.tech/blog</loc><lastmod>2026-05-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aitechservices.tech/blog/ai-voice-agent-for-small-business</loc><lastmod>2026-05-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.aitechservices.tech/blog/small-business-website-cost-2026</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.aitechservices.tech/blog/best-ai-tools-for-local-businesses-2026</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>`, 200, { "Content-Type": "application/xml" })
 );
 
