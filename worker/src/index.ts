@@ -178,9 +178,9 @@ ${navHTML("home")}
 <div id="hero">
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">⚡ Trusted by 200+ Local Businesses</div>
-    <h1 class="hero-title">AI Voice Agents &amp; Websites for Local Businesses</h1>
-    <p class="hero-subtitle">AI Voice Agents that answer calls, book appointments &amp; handle FAQs 24/7. Professional websites built in 5 days. Everything your local business needs.</p>
+    <div class="hero-badge">🦷 Trusted by Dental &amp; Medical Practices</div>
+    <h1 class="hero-title">Every Missed Call Is a Missed Patient</h1>
+    <p class="hero-subtitle">Your receptionists are overwhelmed. Patients call after hours and hit voicemail. Appointments go unconfirmed and no-shows pile up. Our AI Voice Agents answer every call, book appointments, and handle patient inquiries — 24/7, even when your practice is closed.</p>
     <div class="hero-ctas">
       <a href="/services" class="btn btn-primary">Get an AI Voice Agent</a>
       <a href="/services" class="btn btn-secondary">Build My Website</a>
@@ -190,11 +190,12 @@ ${navHTML("home")}
 </div>
 
 <section id="pain-points" class="pain-points">
-  <h2 class="section-title">The Problem Most Local Businesses Face</h2>
+  <h2 class="section-title">The Challenges Every Practice Faces</h2>
   <div class="pain-grid">
-    <div class="pain-card"><div class="pain-icon">📞</div><h3>Missed Calls = Lost Revenue</h3><p>Every unanswered call is a customer walking to your competitor. You can't answer 100+ calls a day, and your voicemail isn't closing deals.</p></div>
-    <div class="pain-card"><div class="pain-icon">👻</div><h3>No Website = Invisible</h3><p>Customers search for businesses online first. Without a professional website, you're losing customers before they ever call.</p></div>
-    <div class="pain-card"><div class="pain-icon">💸</div><h3>Hiring Staff is Expensive</h3><p>A receptionist costs $30K–50K/year. An AI agent costs $299/month and never takes a day off.</p></div>
+    <div class="pain-card"><div class="pain-icon">🌙</div><h3>After-Hours Calls Go to Voicemail</h3><p>Patients call your practice in the evening or on weekends and reach a voicemail. Most don't leave a message — they call the next practice on the list instead.</p></div>
+    <div class="pain-card"><div class="pain-icon">📞</div><h3>Receptionists Can't Keep Up</h3><p>During morning rush and peak hours, calls stack up, go on hold, or ring out unanswered. Your front desk team can only do so much — and patients notice.</p></div>
+    <div class="pain-card"><div class="pain-icon">📅</div><h3>No-Shows Drain Your Schedule</h3><p>Appointments go unconfirmed because there's no time to call every patient. No-shows cost your practice thousands in lost revenue every month.</p></div>
+    <div class="pain-card"><div class="pain-icon">🏃</div><h3>Patients on Hold Call a Competitor</h3><p>When a patient is put on hold, up to 60% hang up within 60 seconds. Many won't call back — they've already booked with a practice that answered.</p></div>
   </div>
 </section>
 
@@ -277,16 +278,17 @@ ${navHTML("services")}
 <section class="services-detail page-section-border">
   <div class="detail-badge">🎙️ Service 1</div>
   <h2 class="section-title text-left">AI Voice Agent</h2>
-  <p class="section-lead">Your business, always available. Our AI voice agent answers every call, books appointments, and handles common questions — 24 hours a day, 7 days a week, 365 days a year.</p>
+  <p class="section-lead">Built for dental and medical practices. Our AI voice agent handles after-hours patient inquiries, books appointments directly into your schedule, answers common patient FAQs, and routes urgent calls to the right staff member — so your practice never misses a patient, day or night.</p>
   <div class="detail-grid">
     <div class="detail-block">
       <h3 class="detail-heading">What It Does</h3>
       <ul class="check-list">
-        <li>Answers calls 24/7 — evenings, weekends, holidays</li>
-        <li>Books appointments directly into your calendar</li>
-        <li>Handles FAQs so your team doesn't have to repeat themselves</li>
-        <li>Routes urgent or complex calls to the right person</li>
-        <li>Captures every lead so no enquiry slips through the cracks</li>
+        <li>Books appointments directly into your practice schedule</li>
+        <li>Answers patient FAQs — insurance, hours, directions, services</li>
+        <li>Handles after-hours patient inquiries 24/7</li>
+        <li>Routes urgent calls immediately to on-call staff</li>
+        <li>Sends appointment reminders to reduce no-shows</li>
+        <li>Manages call overflow during busy clinic hours</li>
       </ul>
     </div>
     <div class="detail-block">
@@ -345,35 +347,35 @@ ${navHTML("services")}
   <div class="case-grid">
 
     <div class="case-card">
-      <div class="case-service-tag">AI Voice Agent</div>
-      <h3 class="case-business">Glamour Hair Studio</h3>
-      <p class="case-industry">Salon</p>
+      <div class="case-service-tag">Example Scenario</div>
+      <h3 class="case-business">Bright Smile Dental Clinic</h3>
+      <p class="case-industry">Dental Practice</p>
       <div class="case-before-after">
-        <div class="case-col"><p class="case-label before-label">Before</p><p>Missing 8–12 calls per day during busy periods. Clients hanging up and booking elsewhere.</p></div>
+        <div class="case-col"><p class="case-label before-label">Before</p><p>Missing 15–20 patient calls per week after hours. Receptionist overwhelmed during morning rush. New patients calling competitors.</p></div>
         <div class="case-arrow">→</div>
-        <div class="case-col"><p class="case-label after-label">After</p><p>AI voice agent answers every call and books appointments automatically. Estimated 15+ extra bookings per month.</p></div>
+        <div class="case-col"><p class="case-label after-label">After</p><p>AI Voice Agent handles all after-hours calls and books appointments directly into the schedule. 40% increase in new patient bookings.</p></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-service-tag">Website Build</div>
-      <h3 class="case-business">Peak Roofing &amp; Repairs</h3>
-      <p class="case-industry">Contractor</p>
+      <div class="case-service-tag">Example Scenario</div>
+      <h3 class="case-business">ClearSkin Dermatology</h3>
+      <p class="case-industry">Dermatology Practice</p>
       <div class="case-before-after">
-        <div class="case-col"><p class="case-label before-label">Before</p><p>No website. Losing jobs to competitors who showed up on Google when customers searched locally.</p></div>
+        <div class="case-col"><p class="case-label before-label">Before</p><p>30% of calls during busy clinic hours going to voicemail. Patients frustrated, leaving for other practices.</p></div>
         <div class="case-arrow">→</div>
-        <div class="case-col"><p class="case-label after-label">After</p><p>New $999 website live in 6 days. Now ranking locally and receiving 3–5 inbound leads per week.</p></div>
+        <div class="case-col"><p class="case-label after-label">After</p><p>AI handles call overflow instantly, answers common patient FAQs, routes urgent cases to staff. Patient satisfaction up, zero missed calls.</p></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-service-tag">AI Voice Agent</div>
-      <h3 class="case-business">Bright Smile Dental</h3>
-      <p class="case-industry">Dental Clinic</p>
+      <div class="case-service-tag">Example Scenario</div>
+      <h3 class="case-business">QuickCare Urgent Care Center</h3>
+      <p class="case-industry">Urgent Care</p>
       <div class="case-before-after">
-        <div class="case-col"><p class="case-label before-label">Before</p><p>Receptionist overwhelmed with calls. Patients waiting on hold during peak hours.</p></div>
+        <div class="case-col"><p class="case-label before-label">Before</p><p>After-hours calls going unanswered. Patients unsure of wait times, insurance coverage, or whether to come in.</p></div>
         <div class="case-arrow">→</div>
-        <div class="case-col"><p class="case-label after-label">After</p><p>AI voice agent handles appointment bookings and FAQs. Receptionist freed up for in-person patients.</p></div>
+        <div class="case-col"><p class="case-label after-label">After</p><p>AI answers after-hours calls 24/7, provides wait time estimates, handles insurance FAQs, and directs emergencies to 911. 25% reduction in unnecessary walk-ins.</p></div>
       </div>
     </div>
 
